@@ -1,0 +1,10 @@
+body{
+    background-color: rgba(200, 200, 200);
+}
+.card-body{
+    background-color:white;
+}
+.row{
+    justify-content: center;
+
+}
