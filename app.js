@@ -1,33 +1,35 @@
-let elemento = document.getElementById('principal');
-let pokemones = [];
-const cargarListado = () =>{
-    let url = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=0";
+let miDiv = document.getElementById("principal");
+let pokemones=[];
+const cargarListado=()=>{
+    let url="https://pokeapi.co/api/v2/pokemon?limit=20&offset=0";
     fetch(url)
     .then((response)=>{
         return response.json();
     })
     .then((objetoJson)=>{
-        const pokemon = objetoJson.results;
-        console.log(pokemon);
-        pokemones = pokemon;
-        pokemon.forEach((p)=>{
-            elemento.innerHTML += `
+        const pokemons = objetoJson.results;
+        console.log(pokemons)
+        pokemones=pokemons
+        pokemons.forEach((p)=> {
+            miDiv.innerHTML+=`
             <button class='btn btn-primary' onclick="crearImagen('${p.url}')"> ${p.name}</button>`;
-        })
-
+        //    `<button class="btn btn-primary"> ${p.name} </button>`
+ 
+        });
     })
-
-};
+}
 cargarListado();
-const crearImagen = (url) =>{
-    let contenedor = document.getElementById('principal');
+const crearImagen=(url)=>{
+    let contenedor = document.getElementById("contenedor");
     fetch(url).then((res)=>{
         return res.json();
     }).then((obj)=>{
      console.log(obj)
      cargarCarta(obj);
     });
+
 }
+
 const cargarCarta =(pk)=>{
     let contenedor = document.getElementById("cont");
     let mov = pk.moves;
