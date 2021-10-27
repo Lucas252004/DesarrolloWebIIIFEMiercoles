@@ -7,7 +7,8 @@ class App extends Component{
     super(props)
     this.state={
       newTask:"Aca va a ir el estado cuando lo cambiemos",
-      numero:0
+      numero:0,
+      task:["Avisar que vamos a salir"]
     }
     this.cont = 1
     this.handleTaskChange=this.handleTaskChange.bind(this)
@@ -27,6 +28,9 @@ class App extends Component{
           </div>
           
           <h2 className="text-white text-center">{this.state.newTask}</h2>
+          <ul>{
+              this.state.task.map((t,i)=><li className="text-white" key={i}>{t}</li>)
+            }</ul>
         </div>
       </div>
     );
